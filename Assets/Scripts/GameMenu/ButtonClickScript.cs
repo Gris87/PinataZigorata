@@ -10,6 +10,12 @@ public class ButtonClickScript : MonoBehaviour
 		audio.PlayOneShot(clip, 1); // TODO: Options.effectsVolume);
 	}
 
+	private void exitApp()
+	{
+		Debug.Log("Application finished");
+		Application.Quit();
+	}
+
 	public void OnNewGameClicked()
 	{
 		Debug.Log("New game pressed");
@@ -26,9 +32,19 @@ public class ButtonClickScript : MonoBehaviour
 
 	public void OnExitClicked()
 	{
-		Debug.Log("Application finished");
-		Application.Quit();
-
 		playSound();
+		exitApp();
+	}
+
+	// Update is called once per frame
+	void Update()
+	{
+		// TODO: Uncomment it
+		/*
+        if (InputControl.GetKeyDown(KeyCode.Escape))
+        {
+			exitApp();
+        }
+		*/
 	}
 }
