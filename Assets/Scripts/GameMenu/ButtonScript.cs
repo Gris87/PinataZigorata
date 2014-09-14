@@ -3,14 +3,14 @@ using System.Collections;
 
 public class ButtonScript : MonoBehaviour
 {
-	private static int APPEAR_ANIMATION_HASH    = Animator.StringToHash("Appear");
-	private static int DISAPPEAR_ANIMATION_HASH = Animator.StringToHash("Disappear");
+	private static int SHOW_TRIGGER_HASH = Animator.StringToHash("Show");
+	private static int HIDE_TRIGGER_HASH = Animator.StringToHash("Hide");
 
 
 
 	public AudioClip clip;
-	public float 	 appearDelay;
-	public float	 disappearDelay;
+	public float 	 showDelay;
+	public float	 hideDelay;
 
 	private Animator mAnimator;
 
@@ -49,8 +49,8 @@ public class ButtonScript : MonoBehaviour
 
 	IEnumerator appear()
 	{
-		yield return new WaitForSeconds(appearDelay);
-		mAnimator.SetTrigger(APPEAR_ANIMATION_HASH);
+		yield return new WaitForSeconds(showDelay);
+		mAnimator.SetTrigger(SHOW_TRIGGER_HASH);
 	}
 
 	// Use this for initialization

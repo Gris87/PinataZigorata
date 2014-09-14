@@ -183,9 +183,9 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1109808099}
-  - {fileID: 894143405}
   - {fileID: 963983406}
+  - {fileID: 894143405}
+  - {fileID: 1109808099}
   m_Father: {fileID: 1320627345}
   m_RootOrder: 1
   m_AnchorMin: {x: 0, y: 0}
@@ -460,8 +460,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clip: {fileID: 8300000, guid: a37ec1986b26297478fcb5c80b4dce4c, type: 3}
-  appearDelay: .100000001
-  disappearDelay: 0
+  showDelay: 1.02499998
+  hideDelay: 0
 --- !u!82 &894143411
 AudioSource:
   m_ObjectHideFlags: 0
@@ -553,7 +553,7 @@ RectTransform:
   m_Children:
   - {fileID: 1617402205}
   m_Father: {fileID: 253460630}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 260, y: 0}
@@ -666,8 +666,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clip: {fileID: 8300000, guid: a37ec1986b26297478fcb5c80b4dce4c, type: 3}
-  appearDelay: .200000003
-  disappearDelay: 0
+  showDelay: 1.04999995
+  hideDelay: 0
 --- !u!82 &963983412
 AudioSource:
   m_ObjectHideFlags: 0
@@ -759,7 +759,7 @@ RectTransform:
   m_Children:
   - {fileID: 751438713}
   m_Father: {fileID: 253460630}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: -260, y: 0}
@@ -872,8 +872,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clip: {fileID: 8300000, guid: a37ec1986b26297478fcb5c80b4dce4c, type: 3}
-  appearDelay: 0
-  disappearDelay: 0
+  showDelay: 1
+  hideDelay: 0
 --- !u!82 &1109808105
 AudioSource:
   m_ObjectHideFlags: 0
