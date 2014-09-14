@@ -1,9 +1,20 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ButtonClickScript : MonoBehaviour
+public class ButtonScript : MonoBehaviour
 {
+	private static int APPEAR_ANIMATION_HASH    = Animator.StringToHash("Appear");
+	private static int DISAPPEAR_ANIMATION_HASH = Animator.StringToHash("Disappear");
+
+
+
 	public AudioClip clip;
+	public float 	 appearDelay;
+	public float	 disappearDelay;
+
+	private Animator mAnimator;
+
+
 
 	private void playSound()
 	{
@@ -34,6 +45,20 @@ public class ButtonClickScript : MonoBehaviour
 	{
 		playSound();
 		exitApp();
+	}
+
+	IEnumerator appear()
+	{
+		yield return new WaitForSeconds(appearDelay);
+		mAnimator.SetTrigger(APPEAR_ANIMATION_HASH);
+	}
+
+	// Use this for initialization
+	void Start()
+	{
+		mAnimator = GetComponent<Animator>();
+
+		StartCoroutine(appear());
 	}
 
 	// Update is called once per frame
