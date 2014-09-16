@@ -8,9 +8,9 @@ public class ButtonScript : MonoBehaviour
 
 
 
-	public AudioClip clip;
-	public float 	 showDelay;
-	public float	 hideDelay;
+	public AudioClip clip      = null;
+	public float 	 showDelay = 0f;
+	public float	 hideDelay = 0f;
 
 	private Animator mAnimator;
 

@@ -249,7 +249,7 @@ AnimatorController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Button
+  m_Name: MenuButton
   serializedVersion: 2
   m_AnimatorParameters:
   - m_Name: Normal
@@ -804,9 +804,6 @@ StateMachine:
       first: {fileID: 110299707}
       second:
       - {fileID: 110157217}
-    data:
-      first: {fileID: 0}
-      second: []
   m_MotionSetCount: 1
   m_AnyStatePosition: {x: -24, y: 60, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
