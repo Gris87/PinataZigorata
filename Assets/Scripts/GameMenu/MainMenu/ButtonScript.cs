@@ -8,17 +8,70 @@ public class ButtonScript : MonoBehaviour
 
 
 
-	public AudioClip clip      = null;
-	public float 	 showDelay = 0f;
-	public float	 hideDelay = 0f;
+	public GameObject              newGameMenu             = null;
+	public NewGameScrollRectScript newGameScrollRectScript = null;
+	public GameObject              settingsMenu            = null;
+	public AudioClip               clip                    = null;
+	public float                   showDelay               = 0f;
+	public float                   hideDelay               = 0f;
+	public float                   menuDelay               = 0f;
 
 	private Animator mAnimator;
 
 
 
+	private IEnumerator startHideAnimation()
+	{
+		yield return new WaitForSeconds(hideDelay);
+		mAnimator.SetTrigger(HIDE_TRIGGER_HASH);
+	}
+
+	private IEnumerator startShowAnimation()
+	{
+		yield return new WaitForSeconds(showDelay);
+		mAnimator.SetTrigger(SHOW_TRIGGER_HASH);
+	}
+
+	private IEnumerator newGame()
+	{
+		yield return new WaitForSeconds(menuDelay);
+
+		// Disable main menu
+		transform.parent.gameObject.SetActive(false);
+
+		newGameMenu.SetActive(true);
+		newGameScrollRectScript.show();
+	}
+
+	private IEnumerator settings()
+	{
+		yield return new WaitForSeconds(menuDelay);
+
+		// Disable main menu
+		transform.parent.gameObject.SetActive(false);
+
+		settingsMenu.SetActive(true);
+		// TODO: Show settings menu
+	}
+
 	private void playSound()
 	{
 		audio.PlayOneShot(clip, 1); // TODO: Options.effectsVolume);
+	}
+
+	private void hide()
+	{
+		Transform parent = transform.parent;
+
+		for (int i=0; i<parent.childCount; ++i)
+		{
+			ButtonScript buttonScript = parent.GetChild(i).GetComponent<ButtonScript>();
+
+			if (buttonScript)
+			{
+				StartCoroutine(buttonScript.startHideAnimation());
+			}
+		}
 	}
 
 	private void exitApp()
@@ -32,6 +85,9 @@ public class ButtonScript : MonoBehaviour
 		Debug.Log("New game pressed");
 
 		playSound();
+		hide();
+
+		StartCoroutine(newGame());
 	}
 	
 	public void OnSettingsClicked()
@@ -39,6 +95,9 @@ public class ButtonScript : MonoBehaviour
 		Debug.Log("Settings pressed");
 
 		playSound();
+		hide();
+
+		StartCoroutine(settings());
 	}
 
 	public void OnExitClicked()
@@ -47,18 +106,12 @@ public class ButtonScript : MonoBehaviour
 		exitApp();
 	}
 
-	IEnumerator appear()
-	{
-		yield return new WaitForSeconds(showDelay);
-		mAnimator.SetTrigger(SHOW_TRIGGER_HASH);
-	}
-
 	// Use this for initialization
 	void Start()
 	{
 		mAnimator = GetComponent<Animator>();
 
-		StartCoroutine(appear());
+		StartCoroutine(startShowAnimation());
 	}
 
 	// Update is called once per frame
