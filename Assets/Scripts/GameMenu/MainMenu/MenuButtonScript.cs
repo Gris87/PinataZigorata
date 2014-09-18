@@ -1,20 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ButtonScript : MonoBehaviour
+public class MenuButtonScript : MonoBehaviour
 {
 	private static int SHOW_TRIGGER_HASH = Animator.StringToHash("Show");
 	private static int HIDE_TRIGGER_HASH = Animator.StringToHash("Hide");
 
 
 
-	public GameObject              newGameMenu             = null;
-	public NewGameScrollRectScript newGameScrollRectScript = null;
-	public GameObject              settingsMenu            = null;
-	public AudioClip               clip                    = null;
-	public float                   showDelay               = 0f;
-	public float                   hideDelay               = 0f;
-	public float                   menuDelay               = 0f;
+	public NewGameMenuScript  newGameMenuScript  = null;
+	public SettingsMenuScript settingsMenuScript = null;
+	public AudioClip          clip               = null;
+	public float              showDelay          = 0f;
+	public float              hideDelay          = 0f;
+	public float              menuDelay          = 0f;
 
 	private Animator mAnimator;
 
@@ -39,8 +38,7 @@ public class ButtonScript : MonoBehaviour
 		// Disable main menu
 		transform.parent.gameObject.SetActive(false);
 
-		newGameMenu.SetActive(true);
-		newGameScrollRectScript.show();
+		newGameMenuScript.show();
 	}
 
 	private IEnumerator settings()
@@ -50,8 +48,7 @@ public class ButtonScript : MonoBehaviour
 		// Disable main menu
 		transform.parent.gameObject.SetActive(false);
 
-		settingsMenu.SetActive(true);
-		// TODO: Show settings menu
+		settingsMenuScript.show();
 	}
 
 	private void playSound()
@@ -65,11 +62,11 @@ public class ButtonScript : MonoBehaviour
 
 		for (int i=0; i<parent.childCount; ++i)
 		{
-			ButtonScript buttonScript = parent.GetChild(i).GetComponent<ButtonScript>();
+			MenuButtonScript menuButtonScript = parent.GetChild(i).GetComponent<MenuButtonScript>();
 
-			if (buttonScript)
+			if (menuButtonScript)
 			{
-				StartCoroutine(buttonScript.startHideAnimation());
+				StartCoroutine(menuButtonScript.startHideAnimation());
 			}
 		}
 	}
