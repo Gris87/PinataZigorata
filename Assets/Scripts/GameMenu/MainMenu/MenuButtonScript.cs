@@ -3,11 +3,6 @@ using System.Collections;
 
 public class MenuButtonScript : MonoBehaviour
 {
-	private static int SHOW_TRIGGER_HASH = Animator.StringToHash("Show");
-	private static int HIDE_TRIGGER_HASH = Animator.StringToHash("Hide");
-
-
-
 	public NewGameMenuScript  newGameMenuScript  = null;
 	public SettingsMenuScript settingsMenuScript = null;
 	public AudioClip          clip               = null;
@@ -22,13 +17,13 @@ public class MenuButtonScript : MonoBehaviour
 	private IEnumerator startHideAnimation()
 	{
 		yield return new WaitForSeconds(hideDelay);
-		mAnimator.SetTrigger(HIDE_TRIGGER_HASH);
+		mAnimator.SetTrigger(Global.HIDE_TRIGGER_HASH);
 	}
 
 	private IEnumerator startShowAnimation()
 	{
 		yield return new WaitForSeconds(showDelay);
-		mAnimator.SetTrigger(SHOW_TRIGGER_HASH);
+		mAnimator.SetTrigger(Global.SHOW_TRIGGER_HASH);
 	}
 
 	private IEnumerator newGame()
@@ -84,7 +79,8 @@ public class MenuButtonScript : MonoBehaviour
 		playSound();
 		hide();
 
-		StartCoroutine(newGame());
+		newGameMenuScript.show();
+		//StartCoroutine(newGame());
 	}
 	
 	public void OnSettingsClicked()
@@ -94,7 +90,8 @@ public class MenuButtonScript : MonoBehaviour
 		playSound();
 		hide();
 
-		StartCoroutine(settings());
+		settingsMenuScript.show();
+		//StartCoroutine(settings());
 	}
 
 	public void OnExitClicked()

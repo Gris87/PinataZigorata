@@ -3,11 +3,6 @@ using System.Collections;
 
 public class NewGameScrollRectScript : MonoBehaviour
 {
-	private static int SHOW_TRIGGER_HASH = Animator.StringToHash("Show");
-	private static int HIDE_TRIGGER_HASH = Animator.StringToHash("Hide");
-
-
-	
 	private Animator mAnimator = null;
 
 
@@ -21,13 +16,20 @@ public class NewGameScrollRectScript : MonoBehaviour
 		return mAnimator;
 	}
 
+	/*
 	public void show()
 	{
-		getAnimator().SetTrigger(SHOW_TRIGGER_HASH);
+		getAnimator().SetTrigger(Global.SHOW_TRIGGER_HASH);
 	}
 
 	public void hide()
 	{
-		getAnimator().SetTrigger(HIDE_TRIGGER_HASH);
+		getAnimator().SetTrigger(Global.HIDE_TRIGGER_HASH);
+	}
+	*/
+
+	void Enable()
+	{
+		StartCoroutine()
 	}
 }
