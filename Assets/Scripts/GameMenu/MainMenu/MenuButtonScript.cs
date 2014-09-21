@@ -3,22 +3,16 @@ using System.Collections;
 
 public class MenuButtonScript : MonoBehaviour
 {
-	public NewGameMenuScript  newGameMenuScript  = null;
-	public SettingsMenuScript settingsMenuScript = null;
-	public AudioClip          clip               = null;
-	public float              showDelay          = 0f;
-	public float              hideDelay          = 0f;
-	public float              menuDelay          = 0f;
+	public Transform        mainMenu  = null;
+	public SwitchMenuScript nextMenu  = null;
+	public AudioClip        clip      = null;
+	public float            showDelay = 0f;
+	public float            hideDelay = 0f;
+	public float            menuDelay = 0f;
 
-	private Animator mAnimator;
+	private Animator mAnimator = null;
 
 
-
-	private IEnumerator startHideAnimation()
-	{
-		yield return new WaitForSeconds(hideDelay);
-		mAnimator.SetTrigger(Global.HIDE_TRIGGER_HASH);
-	}
 
 	private IEnumerator startShowAnimation()
 	{
@@ -26,24 +20,16 @@ public class MenuButtonScript : MonoBehaviour
 		mAnimator.SetTrigger(Global.SHOW_TRIGGER_HASH);
 	}
 
-	private IEnumerator newGame()
+	private IEnumerator startHideAnimation()
 	{
-		yield return new WaitForSeconds(menuDelay);
-
-		// Disable main menu
-		transform.parent.gameObject.SetActive(false);
-
-		newGameMenuScript.show();
+		yield return new WaitForSeconds(hideDelay);
+		mAnimator.SetTrigger(Global.HIDE_TRIGGER_HASH);
 	}
 
-	private IEnumerator settings()
+	private IEnumerator startSwithingToNextMenu()
 	{
 		yield return new WaitForSeconds(menuDelay);
-
-		// Disable main menu
-		transform.parent.gameObject.SetActive(false);
-
-		settingsMenuScript.show();
+		nextMenu.show();
 	}
 
 	private void playSound()
@@ -53,11 +39,9 @@ public class MenuButtonScript : MonoBehaviour
 
 	private void hide()
 	{
-		Transform parent = transform.parent;
-
-		for (int i=0; i<parent.childCount; ++i)
+		for (int i=0; i<mainMenu.childCount; ++i)
 		{
-			MenuButtonScript menuButtonScript = parent.GetChild(i).GetComponent<MenuButtonScript>();
+			MenuButtonScript menuButtonScript = mainMenu.GetChild(i).GetComponent<MenuButtonScript>();
 
 			if (menuButtonScript)
 			{
@@ -79,8 +63,7 @@ public class MenuButtonScript : MonoBehaviour
 		playSound();
 		hide();
 
-		newGameMenuScript.show();
-		//StartCoroutine(newGame());
+		StartCoroutine(startSwithingToNextMenu());
 	}
 	
 	public void OnSettingsClicked()
@@ -90,8 +73,7 @@ public class MenuButtonScript : MonoBehaviour
 		playSound();
 		hide();
 
-		settingsMenuScript.show();
-		//StartCoroutine(settings());
+		StartCoroutine(startSwithingToNextMenu());
 	}
 
 	public void OnExitClicked()
@@ -99,11 +81,13 @@ public class MenuButtonScript : MonoBehaviour
 		playSound();
 		exitApp();
 	}
-
-	// Use this for initialization
-	void Start()
+	
+	void OnEnable()
 	{
-		mAnimator = GetComponent<Animator>();
+		if (mAnimator == null)
+		{
+			mAnimator = GetComponent<Animator>();
+		}
 
 		StartCoroutine(startShowAnimation());
 	}

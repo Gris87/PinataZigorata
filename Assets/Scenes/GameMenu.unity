@@ -119,8 +119,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6b398ef88370284389860aae3b12797, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  newGameScrollRectScript: {fileID: 2105251907}
-  backButtonScript: {fileID: 1333110696}
+  prevMenu: {fileID: 253460629}
+  backButton: {fileID: 1333110691}
 --- !u!1 &212938360
 GameObject:
   m_ObjectHideFlags: 0
@@ -255,7 +255,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &340569714
 RectTransform:
   m_ObjectHideFlags: 0
@@ -268,10 +268,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1320627345}
   m_RootOrder: 3
-  m_AnchorMin: {x: .5, y: .5}
-  m_AnchorMax: {x: .5, y: .5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &340569715
 MonoBehaviour:
@@ -281,10 +281,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 340569713}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00de80c2acfbcce47b7380ba7c4089c8, type: 3}
+  m_Script: {fileID: 11500000, guid: c6b398ef88370284389860aae3b12797, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  backButtonScript: {fileID: 1333110696}
+  prevMenu: {fileID: 253460629}
+  backButton: {fileID: 1333110691}
 --- !u!1 &420591395
 GameObject:
   m_ObjectHideFlags: 0
@@ -365,7 +366,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: .588}
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: cbb3243cb42e966439e624ea232c2e5d, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -718,8 +719,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: .588}
-  m_Sprite: {fileID: 21300000, guid: 62062e28fd0df34478cec505d03d0ba2, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 21300002, guid: 62062e28fd0df34478cec505d03d0ba2, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -758,12 +759,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d774bff81c0540d42aced536ecb2908b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  newGameMenuScript: {fileID: 0}
-  settingsMenuScript: {fileID: 340569715}
+  mainMenu: {fileID: 253460630}
+  nextMenu: {fileID: 340569715}
   clip: {fileID: 8300000, guid: a37ec1986b26297478fcb5c80b4dce4c, type: 3}
   showDelay: 1.02499998
-  hideDelay: 0
-  menuDelay: .25
+  hideDelay: .0250000004
+  menuDelay: .300000012
 --- !u!82 &894143411
 AudioSource:
   m_ObjectHideFlags: 0
@@ -927,8 +928,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: .588}
-  m_Sprite: {fileID: 21300000, guid: 62062e28fd0df34478cec505d03d0ba2, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 21300002, guid: 62062e28fd0df34478cec505d03d0ba2, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -967,12 +968,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d774bff81c0540d42aced536ecb2908b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  newGameMenuScript: {fileID: 0}
-  settingsMenuScript: {fileID: 0}
+  mainMenu: {fileID: 253460630}
+  nextMenu: {fileID: 0}
   clip: {fileID: 8300000, guid: a37ec1986b26297478fcb5c80b4dce4c, type: 3}
   showDelay: 1.04999995
   hideDelay: 0
-  menuDelay: .25
+  menuDelay: 0
 --- !u!82 &963983412
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1136,8 +1137,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: .588}
-  m_Sprite: {fileID: 21300000, guid: 62062e28fd0df34478cec505d03d0ba2, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 21300002, guid: 62062e28fd0df34478cec505d03d0ba2, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1176,12 +1177,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d774bff81c0540d42aced536ecb2908b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  newGameMenuScript: {fileID: 164743739}
-  settingsMenuScript: {fileID: 0}
+  mainMenu: {fileID: 253460630}
+  nextMenu: {fileID: 164743739}
   clip: {fileID: 8300000, guid: a37ec1986b26297478fcb5c80b4dce4c, type: 3}
   showDelay: 1
-  hideDelay: 0
-  menuDelay: .25
+  hideDelay: .0500000007
+  menuDelay: .300000012
 --- !u!82 &1109808105
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1406,7 +1407,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: .588}
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 5c48f90d295331d47b6af055d1250486, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1597,7 +1598,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: .588}
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 5293eae3d0e214c4ab58d2bd5faa4d1e, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1622,6 +1623,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 599066976d802a44f95efe5eea02fbb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  showDelay: 0
+  hideDelay: 0
 --- !u!95 &1333110697
 Animator:
   serializedVersion: 3
@@ -1915,7 +1918,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: a3c585338efa2044dae6233e792b8363, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1975,3 +1978,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00dc54e993db31b469efbff723188363, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  showDelay: 0
+  hideDelay: 0
