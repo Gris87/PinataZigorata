@@ -3,14 +3,15 @@ using System.Collections;
 
 public class MenuButtonScript : MonoBehaviour
 {
-	public Transform        mainMenu  = null;
-	public SwitchMenuScript nextMenu  = null;
-	public AudioClip        clip      = null;
-	public float            showDelay = 0f;
-	public float            hideDelay = 0f;
-	public float            menuDelay = 0f;
+	public Transform         mainMenu          = null;
+	public SwitchMenuScript  nextMenu          = null;
+	public AudioSourceScript audioSourceScript = null;
+	public float             showDelay         = 0f;
+	public float             hideDelay         = 0f;
+	public float             menuDelay         = 0f;
 
-	private Animator mAnimator = null;
+	private Animator mAnimator         = null;
+	private Vector3  mOriginalPosition = new Vector3(-1000, 0, 0);
 
 
 
@@ -29,12 +30,7 @@ public class MenuButtonScript : MonoBehaviour
 	private IEnumerator startSwithingToNextMenu()
 	{
 		yield return new WaitForSeconds(menuDelay);
-		nextMenu.show();
-	}
-
-	private void playSound()
-	{
-		audio.PlayOneShot(clip, 1); // TODO: Options.effectsVolume);
+		nextMenu.goNext();
 	}
 
 	private void hide()
@@ -60,7 +56,7 @@ public class MenuButtonScript : MonoBehaviour
 	{
 		Debug.Log("New game pressed");
 
-		playSound();
+		audioSourceScript.playClickClip();
 		hide();
 
 		StartCoroutine(startSwithingToNextMenu());
@@ -70,7 +66,7 @@ public class MenuButtonScript : MonoBehaviour
 	{
 		Debug.Log("Settings pressed");
 
-		playSound();
+		audioSourceScript.playClickClip();
 		hide();
 
 		StartCoroutine(startSwithingToNextMenu());
@@ -78,12 +74,22 @@ public class MenuButtonScript : MonoBehaviour
 
 	public void OnExitClicked()
 	{
-		playSound();
+		audioSourceScript.playClickClip();
 		exitApp();
+	}
+
+	void OnDisable()
+	{
+		GetComponent<RectTransform>().localPosition = mOriginalPosition;
 	}
 	
 	void OnEnable()
 	{
+		if (mOriginalPosition.x <= -1000)
+		{
+			mOriginalPosition = GetComponent<RectTransform>().localPosition;
+		}
+
 		if (mAnimator == null)
 		{
 			mAnimator = GetComponent<Animator>();

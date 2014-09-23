@@ -3,10 +3,19 @@ using System.Collections;
 
 public class BackButtonScript : MonoBehaviour
 {
-	public float showDelay = 0f;
-	public float hideDelay = 0f;
+	public AudioSourceScript       audioSourceScript        = null;
+	public GameObject              newGameMenu              = null;
+	public NewGameScrollRectScript newGameScrollRectScript  = null;
+	public SwitchMenuScript        newGameSwitchMenuScript  = null;
+	public GameObject              settingsMenu             = null;
+	public SettingsMenuPanelScript settingsMenuPanelScript  = null;
+	public SwitchMenuScript        settingsSwitchMenuScript = null;
+	public float                   showDelay                = 0f;
+	public float                   hideDelay                = 0f;
+	public float                   menuDelay                = 0f;
 	
-	private Animator mAnimator = null;
+	private Animator mAnimator         = null;
+	private Vector3  mOriginalPosition = new Vector3(-1000, 0, 0);
 	
 	
 	
@@ -21,19 +30,57 @@ public class BackButtonScript : MonoBehaviour
 		yield return new WaitForSeconds(hideDelay);
 		mAnimator.SetTrigger(Global.HIDE_TRIGGER_HASH);
 	}
+
+	private IEnumerator startSwithingFromNewGameMenuToMainMenu()
+	{
+		yield return new WaitForSeconds(menuDelay);
+		newGameSwitchMenuScript.goBack();
+	}
+
+	private IEnumerator startSwithingFromSettingsMenuToMainMenu()
+	{
+		yield return new WaitForSeconds(menuDelay);
+		settingsSwitchMenuScript.goBack();
+	}
+
+	public void OnBackPressed()
+	{
+		Debug.Log("Back pressed");
+		
+		audioSourceScript.playClickClip();
+		StartCoroutine(startHideAnimation());
+		
+		if (newGameMenu.activeSelf)
+		{
+			newGameScrollRectScript.hide();
+			StartCoroutine(startSwithingFromNewGameMenuToMainMenu());
+		}
+		else
+		if (settingsMenu.activeSelf)
+		{
+			settingsMenuPanelScript.hide();
+			StartCoroutine(startSwithingFromSettingsMenuToMainMenu());
+		}
+	}
+
+	void OnDisable()
+	{
+		GetComponent<RectTransform>().localPosition = mOriginalPosition;
+	}
 	
 	void OnEnable()
 	{
+		if (mOriginalPosition.x <= -1000)
+		{
+			mOriginalPosition = GetComponent<RectTransform>().localPosition;
+		}
+		
 		if (mAnimator == null)
 		{
 			mAnimator = GetComponent<Animator>();
 		}
 		
 		StartCoroutine(startShowAnimation());
-	}
-
-	public void OnBackPressed()
-	{
 	}
 	
 	// Update is called once per frame

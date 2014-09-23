@@ -5,7 +5,7 @@ AnimatorController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: ScrollRect
+  m_Name: SettingsMenuPanel
   serializedVersion: 2
   m_AnimatorParameters:
   - m_Name: Hide
@@ -40,34 +40,34 @@ Transition:
   m_PrefabInternal: {fileID: 0}
   m_Name: 
   m_SrcState: {fileID: 110200000}
-  m_DstState: {fileID: 110298800}
-  m_TransitionDuration: .862988591
-  m_TransitionOffset: .135018334
+  m_DstState: {fileID: 110240164}
+  m_TransitionDuration: .100000001
+  m_TransitionOffset: 0
   m_Conditions:
   - m_ConditionMode: 1
     m_ConditionEvent: Show
     m_EventTreshold: 0
-    m_ExitTime: .75
+    m_ExitTime: .899999976
   m_Atomic: 1
   m_Solo: 0
   m_Mute: 0
   m_CanTransitionToSelf: 0
---- !u!1101 &110184438
+--- !u!1101 &110111465
 Transition:
   serializedVersion: 2
   m_ObjectHideFlags: 3
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: 
-  m_SrcState: {fileID: 110298800}
+  m_SrcState: {fileID: 110240164}
   m_DstState: {fileID: 110200000}
-  m_TransitionDuration: .998161197
+  m_TransitionDuration: .100000001
   m_TransitionOffset: 0
   m_Conditions:
   - m_ConditionMode: 1
     m_ConditionEvent: Hide
     m_EventTreshold: 0
-    m_ExitTime: .75
+    m_ExitTime: .899999976
   m_Atomic: 1
   m_Solo: 0
   m_Mute: 0
@@ -81,13 +81,13 @@ State:
   m_Speed: 1
   m_CycleOffset: 0
   m_Motions:
-  - {fileID: 7400000, guid: 9bb4a7b072dc3b54d8c2039bc126316a, type: 2}
+  - {fileID: 7400000, guid: 2b3758257653c5247949654ff87e731a, type: 2}
   m_ParentStateMachine: {fileID: 110700000}
-  m_Position: {x: 132, y: -12, z: 0}
+  m_Position: {x: 132, y: -36, z: 0}
   m_IKOnFeet: 0
   m_Mirror: 0
   m_Tag: 
---- !u!1102 &110298800
+--- !u!1102 &110240164
 State:
   m_ObjectHideFlags: 3
   m_PrefabParentObject: {fileID: 0}
@@ -96,9 +96,9 @@ State:
   m_Speed: 1
   m_CycleOffset: 0
   m_Motions:
-  - {fileID: 7400000, guid: 047b09ad7daa9b048b7f79ed18f19532, type: 2}
+  - {fileID: 7400000, guid: c2e4bb11496114746b8053669dcd1380, type: 2}
   m_ParentStateMachine: {fileID: 110700000}
-  m_Position: {x: 132, y: 60, z: 0}
+  m_Position: {x: 132, y: 24, z: 0}
   m_IKOnFeet: 0
   m_Mirror: 0
   m_Tag: 
@@ -112,21 +112,18 @@ StateMachine:
   m_DefaultState: {fileID: 110200000}
   m_States:
   - {fileID: 110200000}
-  - {fileID: 110298800}
+  - {fileID: 110240164}
   m_ChildStateMachine: []
   m_ChildStateMachinePosition: []
   m_OrderedTransitions:
     data:
-      first: {fileID: 110298800}
+      first: {fileID: 110240164}
       second:
-      - {fileID: 110184438}
+      - {fileID: 110111465}
     data:
       first: {fileID: 110200000}
       second:
       - {fileID: 110100000}
-    data:
-      first: {fileID: 0}
-      second: []
   m_MotionSetCount: 1
-  m_AnyStatePosition: {x: -72, y: -12, z: 0}
+  m_AnyStatePosition: {x: -84, y: -24, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}

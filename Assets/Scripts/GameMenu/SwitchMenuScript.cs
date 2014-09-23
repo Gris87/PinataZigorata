@@ -3,14 +3,24 @@ using System.Collections;
 
 public class SwitchMenuScript : MonoBehaviour
 {
-	public GameObject prevMenu   = null;
-	public GameObject backButton = null;
+	public GameObject previousMenu = null;
+	public GameObject backButton   = null;
 
-	public void show()
+
+
+	public void goNext()
 	{
-		prevMenu.SetActive(false);
+		previousMenu.SetActive(false);
 		gameObject.SetActive(true);
 		
-		backButton.gameObject.SetActive(true);
+		backButton.SetActive(true);
+	}
+
+	public void goBack()
+	{
+		backButton.SetActive(false);
+
+		gameObject.SetActive(false);
+		previousMenu.SetActive(true);
 	}
 }

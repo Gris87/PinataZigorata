@@ -4,14 +4,17 @@ using System.Collections;
 
 public class CreateNewGameContentScript : MonoBehaviour
 {
-	public Button buttonPrefab   = null;
-	public int    buttonOffsetX  = 20;
-	public int    buttonOffsetY  = 20;
-	public int    buttonSpacingX = 20;
-	public int    buttonSpacingY = 20;
-	public int    buttonWidth    = 100;
-	public int    buttonHeight   = 100;
-	public int    columnCount    = 5;
+	public AudioSourceScript audioSourceScript = null;
+	public Button            buttonPrefab      = null;
+	public int               buttonOffsetX     = 20;
+	public int               buttonOffsetY     = 20;
+	public int               buttonSpacingX    = 20;
+	public int               buttonSpacingY    = 20;
+	public int               buttonWidth       = 100;
+	public int               buttonHeight      = 100;
+	public int               columnCount       = 5;
+
+
 
 	// Use this for initialization
 	void Start()
@@ -31,6 +34,7 @@ public class CreateNewGameContentScript : MonoBehaviour
 			levelButton.transform.SetParent(transform);
 
 			LevelButtonScript levelButtonScript = levelButton.GetComponent<LevelButtonScript>();
+			levelButtonScript.audioSourceScript = audioSourceScript;
 			levelButtonScript.setLevelId(i+1);
 
 			RectTransform buttonRect    = levelButton.GetComponent<RectTransform>();
