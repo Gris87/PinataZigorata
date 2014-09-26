@@ -13,6 +13,7 @@ public class CreateNewGameContentScript : MonoBehaviour
 	public int               buttonWidth       = 100;
 	public int               buttonHeight      = 100;
 	public int               columnCount       = 5;
+	public float             showDelay         = 0.05f;
 
 
 
@@ -33,10 +34,6 @@ public class CreateNewGameContentScript : MonoBehaviour
 			
 			levelButton.transform.SetParent(transform);
 
-			LevelButtonScript levelButtonScript = levelButton.GetComponent<LevelButtonScript>();
-			levelButtonScript.audioSourceScript = audioSourceScript;
-			levelButtonScript.setLevelId(i+1);
-
 			RectTransform buttonRect    = levelButton.GetComponent<RectTransform>();
 			
 			buttonRect.pivot            = new Vector2(0.5f, 0.5f);
@@ -44,6 +41,12 @@ public class CreateNewGameContentScript : MonoBehaviour
 			buttonRect.localPosition    = new Vector3(buttonOffsetX + buttonWidth / 2 + (buttonWidth + buttonSpacingX) * column, -buttonOffsetY - buttonHeight / 2 - (buttonHeight + buttonSpacingY) * row, 0);
 			buttonRect.sizeDelta        = new Vector2(buttonWidth, buttonHeight);
 			buttonRect.localScale       = new Vector3(1, 1, 1);
+
+			LevelButtonScript levelButtonScript = levelButton.GetComponent<LevelButtonScript>();
+			levelButtonScript.setLevelId(i+1);
+			levelButtonScript.audioSourceScript = audioSourceScript;
+			levelButtonScript.showDelay         = i * showDelay;
+			levelButtonScript.enabled           = true;
 		}
 	}
 }

@@ -12,8 +12,24 @@ public class AudioSourceScript : MonoBehaviour
 		audio.PlayOneShot(clip, volume);
 	}
 
+	public void playSoundClip(AudioClip clip)
+	{
+		if (Settings.SoundEnabled)
+		{
+			playClip(clip, Settings.SoundVolume);
+		}
+	}
+
+	public void playMusicClip(AudioClip clip)
+	{
+		if (Settings.MusicEnabled)
+		{
+			playClip(clip, Settings.MusicVolume);
+		}
+	}
+
 	public void playClickClip()
 	{
-		playClip(clickClip); // TODO: Options.effectsVolume);
+		playSoundClip(clickClip);
 	}
 }

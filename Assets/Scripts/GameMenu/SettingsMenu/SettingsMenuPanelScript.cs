@@ -7,7 +7,8 @@ public class SettingsMenuPanelScript : MonoBehaviour
 	public float hideDelay = 0f;
 	
 	private Animator mAnimator         = null;
-	private Vector3  mOriginalPosition = new Vector3(-1000, 0, 0);
+	private Vector3  mOriginalPosition = new Vector3(0, 0, 0);
+	private Vector2  mOriginalSize     = new Vector2(0, 0);
 	
 	
 	
@@ -30,14 +31,20 @@ public class SettingsMenuPanelScript : MonoBehaviour
 	
 	void OnDisable()
 	{
-		GetComponent<RectTransform>().localPosition = mOriginalPosition;
+		RectTransform rectTransform = GetComponent<RectTransform>();
+
+		rectTransform.localPosition = mOriginalPosition;
+		rectTransform.sizeDelta     = mOriginalSize;
 	}
 	
 	void OnEnable()
 	{
-		if (mOriginalPosition.x <= -1000)
+		if (mOriginalSize.x <= 0)
 		{
-			mOriginalPosition = GetComponent<RectTransform>().localPosition;
+			RectTransform rectTransform = GetComponent<RectTransform>();
+			
+			mOriginalPosition = rectTransform.localPosition;
+			mOriginalSize     = rectTransform.sizeDelta;
 		}
 		
 		if (mAnimator == null)
