@@ -5,13 +5,14 @@ using System.Collections;
 public class CreateNewGameContentScript : MonoBehaviour
 {
 	public AudioSourceScript audioSourceScript = null;
+	public Transform         targetTransform   = null;
 	public Button            buttonPrefab      = null;
-	public int               buttonOffsetX     = 20;
-	public int               buttonOffsetY     = 20;
-	public int               buttonSpacingX    = 20;
-	public int               buttonSpacingY    = 20;
-	public int               buttonWidth       = 100;
-	public int               buttonHeight      = 100;
+	public int               buttonOffsetX     = 60;
+	public int               buttonOffsetY     = 60;
+	public int               buttonSpacingX    = 60;
+	public int               buttonSpacingY    = 60;
+	public int               buttonWidth       = 300;
+	public int               buttonHeight      = 300;
 	public int               columnCount       = 5;
 	public float             showDelay         = 0.05f;
 
@@ -22,7 +23,7 @@ public class CreateNewGameContentScript : MonoBehaviour
 	{
 		Object[] levels = Resources.LoadAll("Levels");
 
-		RectTransform scrollRect = GetComponent<RectTransform>();
+		RectTransform scrollRect = targetTransform.GetComponent<RectTransform>();
 		scrollRect.sizeDelta = new Vector2(scrollRect.sizeDelta.x, buttonOffsetY + (buttonHeight + buttonSpacingY) * (Mathf.FloorToInt((levels.Length + columnCount - 1) / (float)columnCount)));
 
 		for (int i=0; i<levels.Length; ++i)
@@ -32,7 +33,7 @@ public class CreateNewGameContentScript : MonoBehaviour
 
 			GameObject levelButton = Instantiate(buttonPrefab.gameObject) as GameObject;
 			
-			levelButton.transform.SetParent(transform);
+			levelButton.transform.SetParent(targetTransform);
 
 			RectTransform buttonRect    = levelButton.GetComponent<RectTransform>();
 			

@@ -4,7 +4,7 @@ using System.Collections;
 
 public class LevelButtonScript : MonoBehaviour
 {
-	private static float LEVEL_SELECTION_DELAY = 0.1f;
+	private static float LEVEL_SELECTION_DELAY = 0.2f;
 
 
 
@@ -29,7 +29,9 @@ public class LevelButtonScript : MonoBehaviour
 	{
 		yield return new WaitForSeconds(LEVEL_SELECTION_DELAY);
 
-		SceneManager.LoadScene("MainScene");
+		Hashtable levelData = new Hashtable();
+		levelData.Add(Extras.LEVEL_ID_EXTRA, mLevelId);
+		SceneManager.LoadScene("MainScene", levelData);
 	}
 
 	public void OnLevelPressed()
@@ -43,11 +45,13 @@ public class LevelButtonScript : MonoBehaviour
 
 	void OnDisable()
 	{
-		// TODO: Solve problem with incorrect animation
 		RectTransform rectTransform = GetComponent<RectTransform>();
-		
-		rectTransform.localPosition = mOriginalPosition;
-		rectTransform.sizeDelta     = mOriginalSize;
+
+		if (rectTransform)
+		{
+			rectTransform.localPosition = mOriginalPosition;
+			rectTransform.sizeDelta     = mOriginalSize;
+		}
 	}
 	
 	void OnEnable()
@@ -71,6 +75,15 @@ public class LevelButtonScript : MonoBehaviour
 	public void setLevelId(int id)
 	{
 		mLevelId = id;
-		GetComponentInChildren<Text>().text = mLevelId.ToString();
+
+		for (int i=0; i<transform.childCount; ++i)
+		{
+			Text text = transform.GetChild(i).GetComponent<Text>();
+
+			if (text)
+			{
+				text.text = mLevelId.ToString();
+			}
+		}
 	}
 }

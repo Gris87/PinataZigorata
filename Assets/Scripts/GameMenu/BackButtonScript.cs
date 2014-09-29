@@ -5,7 +5,7 @@ public class BackButtonScript : MonoBehaviour
 {
 	public AudioSourceScript       audioSourceScript        = null;
 	public GameObject              newGameMenu              = null;
-	public NewGameScrollRectScript newGameScrollRectScript  = null;
+	public NewGameScrollbarScript  newGameScrollbarScript   = null;
 	public SwitchMenuScript        newGameSwitchMenuScript  = null;
 	public GameObject              settingsMenu             = null;
 	public SettingsMenuPanelScript settingsMenuPanelScript  = null;
@@ -53,7 +53,7 @@ public class BackButtonScript : MonoBehaviour
 		
 		if (newGameMenu.activeSelf)
 		{
-			newGameScrollRectScript.hide();
+			newGameScrollbarScript.hide();
 			StartCoroutine(startSwithingFromNewGameMenuToMainMenu());
 		}
 		else

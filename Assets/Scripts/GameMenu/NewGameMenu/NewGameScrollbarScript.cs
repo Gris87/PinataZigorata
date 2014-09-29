@@ -1,14 +1,14 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
-public class NewGameScrollRectScript : MonoBehaviour
+public class NewGameScrollbarScript : MonoBehaviour
 {
 	public float showDelay = 0f;
 	public float hideDelay = 0f;
 
-	private Animator mAnimator         = null;
-	private Vector3  mOriginalPosition = new Vector3(0, 0, 0);
-	private Vector2  mOriginalSize     = new Vector2(0, 0);
+	private Animator mAnimator      = null;
+	private Color    mOriginalColor = new Color(0f, 0f, 0f, 0f);
 
 
 	
@@ -31,20 +31,18 @@ public class NewGameScrollRectScript : MonoBehaviour
 
 	void OnDisable()
 	{
-		RectTransform rectTransform = GetComponent<RectTransform>();
+		Scrollbar scrollbar = GetComponent<Scrollbar>();
 
-		rectTransform.localPosition = mOriginalPosition;
-		rectTransform.sizeDelta     = mOriginalSize;
+		scrollbar.targetGraphic.color = mOriginalColor;
 	}
 	
 	void OnEnable()
 	{
-		if (mOriginalSize.x <= 0)
+		if (mOriginalColor.r <= 0)
 		{
-			RectTransform rectTransform = GetComponent<RectTransform>();
+			Scrollbar scrollbar = GetComponent<Scrollbar>();
 			
-			mOriginalPosition = rectTransform.localPosition;
-			mOriginalSize     = rectTransform.sizeDelta;
+			mOriginalColor = scrollbar.targetGraphic.color;
 		}
 		
 		if (mAnimator == null)
