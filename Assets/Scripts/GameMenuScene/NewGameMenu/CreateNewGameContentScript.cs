@@ -4,8 +4,9 @@ using System.Collections;
 
 public class CreateNewGameContentScript : MonoBehaviour
 {
-	public AudioSourceScript audioSourceScript = null;
 	public Transform         targetTransform   = null;
+	public AudioSourceScript audioSourceScript = null;
+	public Toggle            editToggle        = null;
 	public Button            buttonPrefab      = null;
 	public int               buttonOffsetX     = 60;
 	public int               buttonOffsetY     = 60;
@@ -46,6 +47,7 @@ public class CreateNewGameContentScript : MonoBehaviour
 			LevelButtonScript levelButtonScript = levelButton.GetComponent<LevelButtonScript>();
 			levelButtonScript.setLevelId(i+1);
 			levelButtonScript.audioSourceScript = audioSourceScript;
+			levelButtonScript.editToggle        = editToggle;
 			levelButtonScript.showDelay         = i * showDelay;
 			levelButtonScript.enabled           = true;
 		}

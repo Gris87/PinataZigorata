@@ -1,6 +1,3 @@
-using UnityEngine;
-using System.Collections;
-
 public class Settings
 {
 	private static string SOUND_ENABLED_KEY = "Sound.Enabled";

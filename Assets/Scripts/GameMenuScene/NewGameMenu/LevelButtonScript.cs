@@ -9,6 +9,7 @@ public class LevelButtonScript : MonoBehaviour
 
 
 	public AudioSourceScript audioSourceScript = null;
+	public Toggle            editToggle        = null;
 	public float             showDelay         = 0f;
 
 	private Animator mAnimator         = null;
@@ -31,7 +32,15 @@ public class LevelButtonScript : MonoBehaviour
 
 		Hashtable levelData = new Hashtable();
 		levelData.Add(Extras.LEVEL_ID_EXTRA, mLevelId);
-		SceneManager.LoadScene("MainScene", levelData);
+
+		if (editToggle.isOn)
+		{
+			SceneManager.LoadScene("EditScene", levelData);
+		}
+		else
+		{
+			SceneManager.LoadScene("MainScene", levelData);
+		}
 	}
 
 	public void OnLevelPressed()
