@@ -3,7 +3,8 @@ using System.Collections;
 
 public class AudioSourceScript : MonoBehaviour
 {
-	public AudioClip clickClip;
+	public AudioClip clip         = null;	
+	public bool      soundPlaying = true;
 
 
 
@@ -14,22 +15,47 @@ public class AudioSourceScript : MonoBehaviour
 
 	public void playSoundClip(AudioClip clip)
 	{
-		if (Settings.SoundEnabled)
-		{
-			playClip(clip, Settings.SoundVolume);
-		}
+		playClip(clip, Settings.SoundVolume);
 	}
 
 	public void playMusicClip(AudioClip clip)
 	{
-		if (Settings.MusicEnabled)
-		{
-			playClip(clip, Settings.MusicVolume);
-		}
+		playClip(clip, Settings.MusicVolume);
 	}
 
-	public void playClickClip()
+	public void playClip()
 	{
-		playSoundClip(clickClip);
+        if (soundPlaying)
+        {
+            playSoundClip(clip);
+        }
+        else
+        {
+            playMusicClip(clip);
+        }
 	}
+	
+	// Update is called once per frame
+    void Update()
+    {
+        if (audio.pitch != Time.timeScale)
+        {
+            audio.pitch = Time.timeScale;
+        }
+        
+        if (soundPlaying)
+        {
+            if (audio.volume != Settings.SoundVolume)
+            {
+                audio.volume = Settings.SoundVolume;
+            }
+        }
+        else
+        {
+            if (audio.volume != Settings.MusicVolume)
+            {
+                audio.volume = Settings.MusicVolume;
+            }
+        }
+    }
 }

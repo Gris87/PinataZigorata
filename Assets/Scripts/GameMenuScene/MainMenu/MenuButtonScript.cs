@@ -57,7 +57,7 @@ public class MenuButtonScript : MonoBehaviour
 	{
 		Debug.Log("New game pressed");
 
-		audioSourceScript.playClickClip();
+		audioSourceScript.playClip();
 		hide();
 
 		StartCoroutine(startSwithingToNextMenu());
@@ -67,7 +67,7 @@ public class MenuButtonScript : MonoBehaviour
 	{
 		Debug.Log("Settings pressed");
 
-		audioSourceScript.playClickClip();
+		audioSourceScript.playClip();
 		hide();
 
 		StartCoroutine(startSwithingToNextMenu());
@@ -75,7 +75,7 @@ public class MenuButtonScript : MonoBehaviour
 
 	public void OnExitClicked()
 	{
-		audioSourceScript.playClickClip();
+		audioSourceScript.playClip();
 		exitApp();
 	}
 

@@ -1,0 +1,2 @@
+Canvas Renderer?
+Reference resolution (Canvas scale mode)

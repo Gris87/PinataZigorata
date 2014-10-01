@@ -135,6 +135,7 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 43778570}
+  m_HideIfInvisible: 0
 --- !u!1 &90037945
 GameObject:
   m_ObjectHideFlags: 0
@@ -200,6 +201,7 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 90037945}
+  m_HideIfInvisible: 0
 --- !u!114 &90037949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -457,6 +459,7 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 278768549}
+  m_HideIfInvisible: 0
 --- !u!1 &340569713
 GameObject:
   m_ObjectHideFlags: 0
@@ -565,6 +568,7 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 404584807}
+  m_HideIfInvisible: 0
 --- !u!1 &420591395
 GameObject:
   m_ObjectHideFlags: 0
@@ -659,6 +663,7 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 465249718}
+  m_HideIfInvisible: 0
 --- !u!1 &485469889
 GameObject:
   m_ObjectHideFlags: 0
@@ -773,7 +778,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Sprite: {fileID: 21300000, guid: e9bb8bfe3fe401e4db309fd9275fdd07, type: 3}
-  m_Type: 0
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -786,6 +791,7 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 545523872}
+  m_HideIfInvisible: 0
 --- !u!1 &565608149
 GameObject:
   m_ObjectHideFlags: 0
@@ -884,6 +890,7 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 622874507}
+  m_HideIfInvisible: 0
 --- !u!1 &729039008
 GameObject:
   m_ObjectHideFlags: 0
@@ -945,6 +952,7 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 729039008}
+  m_HideIfInvisible: 0
 --- !u!1 &751438712
 GameObject:
   m_ObjectHideFlags: 0
@@ -1006,6 +1014,7 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 751438712}
+  m_HideIfInvisible: 0
 --- !u!1 &756237694
 GameObject:
   m_ObjectHideFlags: 0
@@ -1079,8 +1088,8 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_TargetGraphic: {fileID: 756237697}
   m_Interactable: 1
+  m_TargetGraphic: {fileID: 756237697}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -1095,7 +1104,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_Enabled: 1
+        m_CallState: 1
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &756237697
@@ -1112,7 +1121,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Sprite: {fileID: 21300000, guid: 9eaaf989caaa37045acf6785efbc8740, type: 3}
-  m_Type: 0
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1125,6 +1134,7 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 756237694}
+  m_HideIfInvisible: 0
 --- !u!95 &756237699
 Animator:
   serializedVersion: 3
@@ -1215,6 +1225,7 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 843105357}
+  m_HideIfInvisible: 0
 --- !u!1 &849255765
 GameObject:
   m_ObjectHideFlags: 0
@@ -1287,7 +1298,6 @@ GameObject:
   - 114: {fileID: 894143407}
   - 114: {fileID: 894143406}
   - 95: {fileID: 894143409}
-  - 82: {fileID: 894143411}
   - 114: {fileID: 894143410}
   m_Layer: 5
   m_Name: SettingsButton
@@ -1348,8 +1358,8 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_TargetGraphic: {fileID: 894143407}
   m_Interactable: 1
+  m_TargetGraphic: {fileID: 894143407}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -1364,7 +1374,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_Enabled: 1
+        m_CallState: 1
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &894143407
@@ -1380,7 +1390,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Sprite: {fileID: 21300002, guid: 62062e28fd0df34478cec505d03d0ba2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 62062e28fd0df34478cec505d03d0ba2, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1394,6 +1404,7 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 894143404}
+  m_HideIfInvisible: 0
 --- !u!95 &894143409
 Animator:
   serializedVersion: 3
@@ -1426,64 +1437,6 @@ MonoBehaviour:
   showDelay: .0250000004
   hideDelay: .0250000004
   menuDelay: .300000012
---- !u!82 &894143411
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 894143404}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
 --- !u!1 &921867902
 GameObject:
   m_ObjectHideFlags: 0
@@ -1552,8 +1505,8 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_TargetGraphic: {fileID: 545523874}
   m_Interactable: 1
+  m_TargetGraphic: {fileID: 545523874}
   toggleTransition: 1
   graphic: {fileID: 404584809}
   m_Group: {fileID: 0}
@@ -1635,8 +1588,8 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_TargetGraphic: {fileID: 963983408}
   m_Interactable: 1
+  m_TargetGraphic: {fileID: 963983408}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -1651,7 +1604,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_Enabled: 1
+        m_CallState: 1
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &963983408
@@ -1667,7 +1620,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Sprite: {fileID: 21300002, guid: 62062e28fd0df34478cec505d03d0ba2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 62062e28fd0df34478cec505d03d0ba2, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1681,6 +1634,7 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 963983405}
+  m_HideIfInvisible: 0
 --- !u!95 &963983410
 Animator:
   serializedVersion: 3
@@ -1725,7 +1679,6 @@ GameObject:
   - 114: {fileID: 1109808101}
   - 114: {fileID: 1109808100}
   - 95: {fileID: 1109808103}
-  - 82: {fileID: 1109808105}
   - 114: {fileID: 1109808104}
   m_Layer: 5
   m_Name: NewGameButton
@@ -1786,8 +1739,8 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_TargetGraphic: {fileID: 1109808101}
   m_Interactable: 1
+  m_TargetGraphic: {fileID: 1109808101}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -1802,7 +1755,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_Enabled: 1
+        m_CallState: 1
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1109808101
@@ -1818,7 +1771,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Sprite: {fileID: 21300002, guid: 62062e28fd0df34478cec505d03d0ba2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 62062e28fd0df34478cec505d03d0ba2, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1832,6 +1785,7 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1109808098}
+  m_HideIfInvisible: 0
 --- !u!95 &1109808103
 Animator:
   serializedVersion: 3
@@ -1864,64 +1818,6 @@ MonoBehaviour:
   showDelay: 0
   hideDelay: .0500000007
   menuDelay: .300000012
---- !u!82 &1109808105
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1109808098}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
 --- !u!1 &1165744583
 GameObject:
   m_ObjectHideFlags: 0
@@ -1981,6 +1877,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_FirstSelected: {fileID: 0}
+  m_sendNavigationEvents: 1
 --- !u!4 &1165744587
 Transform:
   m_ObjectHideFlags: 0
@@ -2004,7 +1901,7 @@ GameObject:
   - 82: {fileID: 1188361950}
   - 114: {fileID: 1188361949}
   m_Layer: 0
-  m_Name: AudioSource
+  m_Name: SoundAudioSource
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2033,7 +1930,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de31122ad567bf744b9c2c2276a53d04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clickClip: {fileID: 8300000, guid: a37ec1986b26297478fcb5c80b4dce4c, type: 3}
+  clip: {fileID: 8300000, guid: a37ec1986b26297478fcb5c80b4dce4c, type: 3}
+  soundPlaying: 1
 --- !u!82 &1188361950
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2164,8 +2062,8 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_TargetGraphic: {fileID: 465249720}
   m_Interactable: 1
+  m_TargetGraphic: {fileID: 465249720}
   m_HandleRect: {fileID: 465249719}
   m_Direction: 2
   m_Value: .999998152
@@ -2203,6 +2101,7 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1315559894}
+  m_HideIfInvisible: 0
 --- !u!114 &1315559899
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2301,6 +2200,7 @@ Canvas:
   m_PlaneDistance: 100
   m_PixelPerfect: 1
   m_ReceivesEvents: 1
+  m_OverrideSorting: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
 --- !u!114 &1320627348
@@ -2315,6 +2215,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Resolution: {x: 2400, y: 1800}
+  m_CanvasScaleMode: 0
   m_MatchWidthOrHeight: 1
 --- !u!1 &1333110691
 GameObject:
@@ -2388,8 +2289,8 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_TargetGraphic: {fileID: 1333110694}
   m_Interactable: 1
+  m_TargetGraphic: {fileID: 1333110694}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -2404,7 +2305,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_Enabled: 1
+        m_CallState: 1
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1333110694
@@ -2434,6 +2335,7 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1333110691}
+  m_HideIfInvisible: 0
 --- !u!114 &1333110696
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2573,8 +2475,8 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_TargetGraphic: {fileID: 1345199200}
   m_Interactable: 1
+  m_TargetGraphic: {fileID: 1345199200}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -2589,7 +2491,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_Enabled: 1
+        m_CallState: 1
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1345199200
@@ -2606,7 +2508,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Sprite: {fileID: 21300000, guid: 9eaaf989caaa37045acf6785efbc8740, type: 3}
-  m_Type: 0
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -2619,6 +2521,7 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1345199197}
+  m_HideIfInvisible: 0
 --- !u!95 &1345199202
 Animator:
   serializedVersion: 3
@@ -2709,6 +2612,7 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1617402204}
+  m_HideIfInvisible: 0
 --- !u!1 &1720069497
 GameObject:
   m_ObjectHideFlags: 0
@@ -2753,6 +2657,7 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1720069497}
+  m_HideIfInvisible: 0
 --- !u!224 &1720069500
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2831,6 +2736,7 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1782483922}
+  m_HideIfInvisible: 0
 --- !u!1 &1929800422
 GameObject:
   m_ObjectHideFlags: 0
@@ -2892,6 +2798,7 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1929800422}
+  m_HideIfInvisible: 0
 --- !u!1 &2105251900
 GameObject:
   m_ObjectHideFlags: 0
@@ -2969,6 +2876,7 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2105251900}
+  m_HideIfInvisible: 0
 --- !u!114 &2105251905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2987,5 +2895,12 @@ MonoBehaviour:
   m_Elasticity: .100000001
   m_Inertia: 1
   m_DecelerationRate: .135000005
+  m_ScrollSensitivity: 1
+  m_DragThreshold: 15
   m_HorizontalScrollbar: {fileID: 0}
   m_VerticalScrollbar: {fileID: 1315559896}
+  m_OnValueChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.ScrollRect+ScrollRectEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null

@@ -47,7 +47,7 @@ public class LevelButtonScript : MonoBehaviour
 	{
 		Debug.Log("Level " + mLevelId.ToString() + " selected");
 
-		audioSourceScript.playClickClip();
+		audioSourceScript.playClip();
 
 		StartCoroutine(startLevelSelection());
 	}

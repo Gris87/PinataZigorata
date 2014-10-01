@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<level>
+  <name>Please input name</name>
+  <background>Default.png</background>
+  <rows>3</rows>
+  <columns>3</columns>  
+  <player>
+    <position>
+    </position>
+  </player>
+</level>

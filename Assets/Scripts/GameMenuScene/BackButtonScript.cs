@@ -48,7 +48,7 @@ public class BackButtonScript : MonoBehaviour
 	{
 		Debug.Log("Back pressed");
 		
-		audioSourceScript.playClickClip();
+		audioSourceScript.playClip();
 		StartCoroutine(startHideAnimation());
 		
 		if (newGameMenu.activeSelf)

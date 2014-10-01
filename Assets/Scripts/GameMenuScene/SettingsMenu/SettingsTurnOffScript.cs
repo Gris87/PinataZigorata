@@ -13,7 +13,7 @@ public class SettingsTurnOffScript : MonoBehaviour
 		bool isOn = turnOffImage.gameObject.activeSelf;
 		Debug.Log("Change " + settingsOption + " option to " + (isOn ? "true" : "false"));
 
-		audioSourceScript.playClickClip();
+		audioSourceScript.playClip();
 
 		turnOffImage.gameObject.SetActive(!isOn);
 
