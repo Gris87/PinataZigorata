@@ -13,7 +13,7 @@ public class GameMenuInitializerScript : MonoBehaviour
 		if (sceneArguments != null)
 		{
 			string previousScene = (string)sceneArguments[Extras.PREVIOUS_SCENE_EXTRA];
-			editToggle.SetActive(previousScene.Equals("EditScene"));
+			editToggle.SetActive(previousScene.Equals(Global.EDIT_SCENE_NAME));
 		}
 		else
 		{

@@ -35,11 +35,11 @@ public class LevelButtonScript : MonoBehaviour
 
 		if (editToggle.isOn)
 		{
-			SceneManager.LoadScene("EditScene", levelData);
+			SceneManager.LoadScene(Global.EDIT_SCENE_NAME, levelData);
 		}
 		else
 		{
-			SceneManager.LoadScene("MainScene", levelData);
+			SceneManager.LoadScene(Global.MAIN_SCENE_NAME, levelData);
 		}
 	}
 
