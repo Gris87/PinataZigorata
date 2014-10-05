@@ -110,7 +110,7 @@ public class TabWidgetScript : MonoBehaviour
 			mCurrentIndex = -1;
 		}
 	}
-
+// TODO: property
 	public void SetCurrentIndex(int index)
 	{
 		mCurrentIndex = index;

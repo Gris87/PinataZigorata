@@ -7,7 +7,7 @@ public class LevelButtonScript : MonoBehaviour
 	private static float LEVEL_SELECTION_DELAY = 0.2f;
 
 
-
+// TODO: pointer to parent
 	public AudioSourceScript audioSourceScript = null;
 	public Toggle            editToggle        = null;
 	public float             showDelay         = 0f;

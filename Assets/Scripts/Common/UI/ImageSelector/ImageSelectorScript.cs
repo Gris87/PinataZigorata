@@ -89,7 +89,7 @@ public class ImageSelectorScript : MonoBehaviour
 			else
 			{
 #else		
-			File.Delete(listFilePath);			
+				File.Delete(listFilePath);
 #endif
 				DirectoryInfo dir = new DirectoryInfo(Application.streamingAssetsPath + "/" + pathToImages);
 				FileInfo[] files = dir.GetFiles();
@@ -165,7 +165,6 @@ public class ImageSelectorScript : MonoBehaviour
 			
 			if (imagePath.Contains("://"))
 			{
-				// TODO: Cache downloaded image
 				WWW www = new WWW(imagePath);
 				yield return www;
 				imageBytes = www.bytes;
