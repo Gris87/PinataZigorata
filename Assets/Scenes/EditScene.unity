@@ -3982,6 +3982,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nameEdit: {fileID: 1329931368}
+  imageSelectorScript: {fileID: 1539728526}
   rowsScrollbar: {fileID: 2034808837}
   columnsScrollbar: {fileID: 1112967266}
 --- !u!1 &1993348915
@@ -4541,7 +4542,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1439475377}
   m_Direction: 2
   m_Value: 1
-  m_Size: .999999523
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

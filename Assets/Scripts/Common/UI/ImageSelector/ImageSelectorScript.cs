@@ -187,9 +187,37 @@ public class ImageSelectorScript : MonoBehaviour
 	// Use this for initialization
 	void Start()
 	{
-		mLeftButton  = transform.FindChild("LeftButton").GetComponent<Button>();
-		mRightButton = transform.FindChild("RightButton").GetComponent<Button>();
-		mImage       = transform.FindChild("Image").GetComponent<Image>();
+		Transform leftButtonTransform = transform.FindChild("LeftButton");
+
+		if (leftButtonTransform == null)
+		{
+			Debug.LogError("LeftButton doesn't found in ImageSelector");
+			return;
+		}
+
+		mLeftButton  = leftButtonTransform.GetComponent<Button>();
+
+		Transform rightButtonTransform = transform.FindChild("RightButton");
+		
+		if (rightButtonTransform == null)
+		{
+			Debug.LogError("RightButton doesn't found in ImageSelector");
+			return;
+		}
+		
+		mRightButton = rightButtonTransform.GetComponent<Button>();
+
+		Transform imageTransform = transform.FindChild("Image");
+		
+		if (imageTransform == null)
+		{
+			Debug.LogError("Image doesn't found in ImageSelector");
+			return;
+		}
+		
+		mImage = imageTransform.GetComponent<Image>();
+
+
 
 		mLeftButton.onClick.AddListener(OnLeftPressed);
 		mRightButton.onClick.AddListener(OnRightPressed);
