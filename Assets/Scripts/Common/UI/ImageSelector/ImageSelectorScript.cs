@@ -2,14 +2,17 @@
 
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 
+// TODO: Move it to UnityUITest
 public class ImageSelectorScript : MonoBehaviour
 {
-	public string pathToImages = "Images";
-	public string defaultImage = "Default.jpg";
+	public string     pathToImages    = "Images";
+	public string     defaultImage    = "Default.jpg";
+	public UnityEvent onImageSelected;
 
 	private Button                     mLeftButton;
 	private Button                     mRightButton;
@@ -57,7 +60,7 @@ public class ImageSelectorScript : MonoBehaviour
 
 
 
-	IEnumerator startLoadingStreamingAssets()
+	private IEnumerator startLoadingStreamingAssets()
 	{
 #if IMAGE_SELECTOR_DEBUG
 		Debug.Log("Streaming assets path : " + Application.streamingAssetsPath);
@@ -96,7 +99,7 @@ public class ImageSelectorScript : MonoBehaviour
 				
 				images = new string[files.Length];
 				
-				for (int i = 0; i < files.Length; ++i)
+				for (int i=0; i<files.Length; ++i)
 				{
 					images[i] = files[i].Name;
 				}
@@ -111,7 +114,7 @@ public class ImageSelectorScript : MonoBehaviour
 		Debug.Log("List file contents :\n" + string.Join("\n", images));
 #endif
 
-		for (int i = 0; i < images.Length; ++i)
+		for (int i=0; i<images.Length; ++i)
 		{
 			if (!images[i].Trim().Equals(""))
 			{
@@ -134,7 +137,7 @@ public class ImageSelectorScript : MonoBehaviour
 		}
 	}
 
-	IEnumerator startUpdateImage()
+	private IEnumerator startUpdateImage()
 	{
 		if (mSelectedIndex < 0)
 		{
@@ -182,6 +185,8 @@ public class ImageSelectorScript : MonoBehaviour
 		}
 
 		mImage.sprite = sprite;
+
+		onImageSelected.Invoke();
 	}
 
 	// Use this for initialization
@@ -231,7 +236,7 @@ public class ImageSelectorScript : MonoBehaviour
 		StartCoroutine(startLoadingStreamingAssets());
 	}
 
-	public void OnLeftPressed()
+	private void OnLeftPressed()
 	{
 #if IMAGE_SELECTOR_DEBUG
 		Debug.Log("Left button pressed");
@@ -241,7 +246,7 @@ public class ImageSelectorScript : MonoBehaviour
 		StartCoroutine(startUpdateImage());
 	}
 
-	public void OnRightPressed()
+	private void OnRightPressed()
 	{
 #if IMAGE_SELECTOR_DEBUG
 		Debug.Log("Right button pressed");

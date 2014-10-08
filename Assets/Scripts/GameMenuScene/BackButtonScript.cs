@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿#define BACK_BUTTON_DEBUG
+
+using UnityEngine;
 using System.Collections;
 
 public class BackButtonScript : MonoBehaviour
@@ -46,7 +48,9 @@ public class BackButtonScript : MonoBehaviour
 
 	public void OnBackPressed()
 	{
+#if BACK_BUTTON_DEBUG
 		Debug.Log("Back pressed");
+#endif
 		
 		audioSourceScript.playClip();
 		StartCoroutine(startHideAnimation());

@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿#define LEVEL_BUTTON_DEBUG
+
+using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
@@ -45,7 +47,9 @@ public class LevelButtonScript : MonoBehaviour
 
 	public void OnLevelPressed()
 	{
+#if LEVEL_BUTTON_DEBUG
 		Debug.Log("Level " + mLevelId.ToString() + " selected");
+#endif
 
 		audioSourceScript.playClip();
 

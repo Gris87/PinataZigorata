@@ -1,3 +1,4 @@
+Empty.png
 Brick_1.png
 Brick_2.png
 Brick_3.png

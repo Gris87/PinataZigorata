@@ -1,3 +1,5 @@
+#define LEVEL_INFO_DEBUG
+
 using UnityEngine;
 using System.IO;
 using System.Text;
@@ -14,7 +16,9 @@ public class LevelInfo
 
 	public void save(string path)
 	{
+#if LEVEL_INFO_DEBUG
 		Debug.Log("Save level info to " + path);
+#endif
 
 		XmlSerializerNamespaces ns = new XmlSerializerNamespaces();
 		ns.Add("","");
@@ -28,7 +32,9 @@ public class LevelInfo
 
 	public static LevelInfo load(string path)
 	{
+#if LEVEL_INFO_DEBUG
 		Debug.Log("Load level info from " + path);
+#endif
 
 		XmlSerializer serializer = new XmlSerializer(typeof(LevelInfo));
 
@@ -41,7 +47,9 @@ public class LevelInfo
 
 	public static LevelInfo loadFromText(string text)
 	{
+#if LEVEL_INFO_DEBUG
 		Debug.Log("Load level info from text");
+#endif
 
 		XmlSerializer serializer = new XmlSerializer(typeof(LevelInfo));
 		return serializer.Deserialize(new StringReader(text)) as LevelInfo;

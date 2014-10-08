@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿#define MENU_BUTTON_DEBUG
+
+using UnityEngine;
 using System.Collections;
 
 public class MenuButtonScript : MonoBehaviour
@@ -49,13 +51,18 @@ public class MenuButtonScript : MonoBehaviour
 
 	private void exitApp()
 	{
+#if MENU_BUTTON_DEBUG
 		Debug.Log("Application finished");
+#endif
+
 		Application.Quit();
 	}
 
 	public void OnNewGameClicked()
 	{
+#if MENU_BUTTON_DEBUG
 		Debug.Log("New game pressed");
+#endif
 
 		audioSourceScript.playClip();
 		hide();
@@ -65,7 +72,9 @@ public class MenuButtonScript : MonoBehaviour
 	
 	public void OnSettingsClicked()
 	{
+#if MENU_BUTTON_DEBUG
 		Debug.Log("Settings pressed");
+#endif
 
 		audioSourceScript.playClip();
 		hide();

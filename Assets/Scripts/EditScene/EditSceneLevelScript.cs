@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿#define EDIT_SCENE_LEVEL_DEBUG
+
+using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
@@ -32,7 +34,9 @@ public class EditSceneLevelScript : MonoBehaviour
 
 		mLevelFileName = "Level " + mLevelFileName + ".xml";
 
+#if EDIT_SCENE_LEVEL_DEBUG
 		Debug.Log("Loading level : " + mLevelFileName);
+#endif
 
 #if UNITY_EDITOR
 		mLevelInfo = LevelInfo.load(Application.dataPath + "/Resources/Levels/" + mLevelFileName);
@@ -48,7 +52,9 @@ public class EditSceneLevelScript : MonoBehaviour
 
 	public void OnSavePressed()
 	{
+#if EDIT_SCENE_LEVEL_DEBUG
 		Debug.Log("Save pressed");
+#endif
 
 		mLevelInfo.name       = nameEdit.text.text;
 		mLevelInfo.background = imageSelectorScript.selectedImage;

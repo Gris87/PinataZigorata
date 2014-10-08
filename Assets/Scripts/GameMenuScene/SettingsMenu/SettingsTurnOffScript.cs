@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿#define SETTINGS_TURN_OFF_DEBUG
+
+using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
@@ -11,7 +13,10 @@ public class SettingsTurnOffScript : MonoBehaviour
 	public void OnPressed()
 	{
 		bool isOn = turnOffImage.gameObject.activeSelf;
+
+#if SETTINGS_TURN_OFF_DEBUG
 		Debug.Log("Change " + settingsOption + " option to " + (isOn ? "true" : "false"));
+#endif
 
 		audioSourceScript.playClip();
 
