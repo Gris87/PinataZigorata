@@ -44,7 +44,7 @@ public class EditSceneLevelScript : MonoBehaviour
 #endif
 
 		// Applying loaded level
-		nameEdit.text.text                = mLevelInfo.name;
+		nameEdit.text                     = mLevelInfo.name;
 		imageSelectorScript.selectedImage = mLevelInfo.background;
 		rowsScrollbar.value               = (float)mLevelInfo.rows    / Global.LEVEL_MAX_HEIGHT;
 		columnsScrollbar.value            = (float)mLevelInfo.columns / Global.LEVEL_MAX_WIDTH;
@@ -56,7 +56,7 @@ public class EditSceneLevelScript : MonoBehaviour
 		Debug.Log("Save pressed");
 #endif
 
-		mLevelInfo.name       = nameEdit.text.text;
+		mLevelInfo.name       = nameEdit.text;
 		mLevelInfo.background = imageSelectorScript.selectedImage;
 		mLevelInfo.rows       = (int)(rowsScrollbar.value    * Global.LEVEL_MAX_HEIGHT);
 		mLevelInfo.columns    = (int)(columnsScrollbar.value * Global.LEVEL_MAX_WIDTH);

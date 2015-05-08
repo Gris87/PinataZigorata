@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ef27a33f8a0d4474f9724b0f5dc2d300
+guid: 0778411a98cbbae4d9741aa3fd761deb
 TextureImporter:
   fileIDToRecycleName:
     21300000: SaveButton
@@ -28,7 +28,7 @@ TextureImporter:
     filterMode: -1
     aniso: -1
     mipBias: -1
-    wrapMode: -1
+    wrapMode: 1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
