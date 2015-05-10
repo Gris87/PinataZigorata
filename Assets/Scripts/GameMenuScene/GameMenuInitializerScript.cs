@@ -1,23 +1,23 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class GameMenuInitializerScript : MonoBehaviour
 {
-	public GameObject editToggle = null;
+    public GameObject editToggle = null;
 
-	// Use this for initialization
-	void Start()
-	{
-		Hashtable sceneArguments = SceneManager.sceneArguments;
+    // Use this for initialization
+    void Start()
+    {
+        Hashtable sceneArguments = SceneManager.sceneArguments;
 
-		if (sceneArguments != null)
-		{
-			string previousScene = (string)sceneArguments[Extras.PREVIOUS_SCENE_EXTRA];
-			editToggle.SetActive(previousScene.Equals(Global.EDIT_SCENE_NAME));
-		}
-		else
-		{
-			editToggle.SetActive(!Build.Release);
-		}
-	}
+        if (sceneArguments != null)
+        {
+            string previousScene = (string)sceneArguments[Extras.PREVIOUS_SCENE_EXTRA];
+            editToggle.SetActive(previousScene.Equals(Global.EDIT_SCENE_NAME));
+        }
+        else
+        {
+            editToggle.SetActive(!Build.Release);
+        }
+    }
 }

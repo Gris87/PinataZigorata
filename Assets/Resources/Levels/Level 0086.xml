@@ -3,7 +3,7 @@
   <name>Please input name</name>
   <background>Default.png</background>
   <rows>3</rows>
-  <columns>3</columns>  
+  <columns>3</columns>
   <player>
     <position>
     </position>

@@ -1,4 +1,4 @@
-﻿//#define IMAGE_SELECTOR_DEBUG
+//#define IMAGE_SELECTOR_DEBUG
 
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,249 +10,249 @@ using System.Collections.Generic;
 // TODO: Move it to UnityUITest
 public class ImageSelectorScript : MonoBehaviour
 {
-	public string     pathToImages    = "Images";
-	public string     defaultImage    = "Default.jpg";
-	public UnityEvent onImageSelected;
+    public string     pathToImages    = "Images";
+    public string     defaultImage    = "Default.jpg";
+    public UnityEvent onImageSelected;
 
-	private Button                     mLeftButton;
-	private Button                     mRightButton;
-	private Image                      mImage;
-	private List<string>               mImages;
-	private Dictionary<string, Sprite> mCachedSprites;
-	private string                     mSelectedImage;
-	private int                        mSelectedIndex;
-
-
-
-	public string selectedImage
-	{
-		get
-		{
-			return mSelectedImage;
-		}
-
-		set
-		{
-			if (mImages.Count > 0)
-			{
-				mSelectedIndex = mImages.IndexOf(value);				
-				StartCoroutine(startUpdateImage());
-			}
-		}
-	}
-
-	public int selectedIndex
-	{
-		get
-		{
-			return mSelectedIndex;
-		}
-		
-		set
-		{
-			if (mImages.Count > 0)
-			{
-				mSelectedIndex = value;
-				StartCoroutine(startUpdateImage());
-			}
-		}
-	}
+    private Button                     mLeftButton;
+    private Button                     mRightButton;
+    private Image                      mImage;
+    private List<string>               mImages;
+    private Dictionary<string, Sprite> mCachedSprites;
+    private string                     mSelectedImage;
+    private int                        mSelectedIndex;
 
 
 
-	private IEnumerator startLoadingStreamingAssets()
-	{
+    public string selectedImage
+    {
+        get
+        {
+            return mSelectedImage;
+        }
+
+        set
+        {
+            if (mImages.Count > 0)
+            {
+                mSelectedIndex = mImages.IndexOf(value);
+                StartCoroutine(startUpdateImage());
+            }
+        }
+    }
+
+    public int selectedIndex
+    {
+        get
+        {
+            return mSelectedIndex;
+        }
+
+        set
+        {
+            if (mImages.Count > 0)
+            {
+                mSelectedIndex = value;
+                StartCoroutine(startUpdateImage());
+            }
+        }
+    }
+
+
+
+    private IEnumerator startLoadingStreamingAssets()
+    {
 #if IMAGE_SELECTOR_DEBUG
-		Debug.Log("Streaming assets path : " + Application.streamingAssetsPath);
+        Debug.Log("Streaming assets path : " + Application.streamingAssetsPath);
 #endif
 
-		string listFilePath = Application.streamingAssetsPath + "/" + pathToImages + "/_list.txt";
-		string[] images;
+        string listFilePath = Application.streamingAssetsPath + "/" + pathToImages + "/_list.txt";
+        string[] images;
 
 #if IMAGE_SELECTOR_DEBUG
-		Debug.Log("List file path : " + listFilePath);
+        Debug.Log("List file path : " + listFilePath);
 #endif
 
-		if (listFilePath.Contains("://"))
-		{
-			// TODO: Check that _list.txt file exists
-			WWW www = new WWW(listFilePath);
-			yield return www;
-			images = www.text.Split('\n');
-		}
-		else
-		{
-			// We don't need in list file for platforms with filesystem. So, let's remove it and get list of files with filesystem.
-			// Keep list file for editor. Because it will remove it from our Assets/StreamingAssets folder
+        if (listFilePath.Contains("://"))
+        {
+            // TODO: Check that _list.txt file exists
+            WWW www = new WWW(listFilePath);
+            yield return www;
+            images = www.text.Split('\n');
+        }
+        else
+        {
+            // We don't need in list file for platforms with filesystem. So, let's remove it and get list of files with filesystem.
+            // Keep list file for editor. Because it will remove it from our Assets/StreamingAssets folder
 #if UNITY_EDITOR
-			if (File.Exists(listFilePath))
-			{
-				images = File.ReadAllLines(listFilePath);
-			}
-			else
-			{
-#else		
-				File.Delete(listFilePath);
+            if (File.Exists(listFilePath))
+            {
+                images = File.ReadAllLines(listFilePath);
+            }
+            else
+            {
+#else
+                File.Delete(listFilePath);
 #endif
-				DirectoryInfo dir = new DirectoryInfo(Application.streamingAssetsPath + "/" + pathToImages);
-				FileInfo[] files = dir.GetFiles();
-				
-				images = new string[files.Length];
-				
-				for (int i=0; i<files.Length; ++i)
-				{
-					images[i] = files[i].Name;
-				}
+                DirectoryInfo dir = new DirectoryInfo(Application.streamingAssetsPath + "/" + pathToImages);
+                FileInfo[] files = dir.GetFiles();
+
+                images = new string[files.Length];
+
+                for (int i=0; i<files.Length; ++i)
+                {
+                    images[i] = files[i].Name;
+                }
 
 #if UNITY_EDITOR
-				Debug.Log("Please add _list.txt file with all files in Assets/StreamingAssets/" + pathToImages + " if you want to let ImageSelector work properly on Android and on Web player");
-			}
+                Debug.Log("Please add _list.txt file with all files in Assets/StreamingAssets/" + pathToImages + " if you want to let ImageSelector work properly on Android and on Web player");
+            }
 #endif
-		}
+        }
 
 #if IMAGE_SELECTOR_DEBUG
-		Debug.Log("List file contents :\n" + string.Join("\n", images));
+        Debug.Log("List file contents :\n" + string.Join("\n", images));
 #endif
 
-		for (int i=0; i<images.Length; ++i)
-		{
-			if (!images[i].Trim().Equals(""))
-			{
-				mImages.Add(images[i]);
-			}
-		}
-		
-#if IMAGE_SELECTOR_DEBUG
-		Debug.Log(mImages.Count.ToString() + " images in Assets/StreamingAssets/" + pathToImages);
-#endif
-		
-		if (mImages.Count > 0)
-		{
-			mSelectedIndex = mImages.IndexOf(defaultImage);
-			StartCoroutine(startUpdateImage());
-		}
-		else
-		{
-			Debug.LogError("Images not found in Assets/StreamingAssets/" + pathToImages);
-		}
-	}
-
-	private IEnumerator startUpdateImage()
-	{
-		if (mSelectedIndex < 0)
-		{
-			mSelectedIndex = 0;
-		}
-		else
-		if (mSelectedIndex > mImages.Count - 1)
-		{
-			mSelectedIndex = mImages.Count - 1;
-		}
-
-		mSelectedImage = mImages[mSelectedIndex];
-
-		mLeftButton.interactable  = (mSelectedIndex > 0);
-		mRightButton.interactable = (mSelectedIndex < mImages.Count - 1);
-
-		string imagePath = Application.streamingAssetsPath + "/" + pathToImages + "/" + mSelectedImage;
+        for (int i=0; i<images.Length; ++i)
+        {
+            if (!images[i].Trim().Equals(""))
+            {
+                mImages.Add(images[i]);
+            }
+        }
 
 #if IMAGE_SELECTOR_DEBUG
-		Debug.Log("Updating image from path : " + imagePath);
+        Debug.Log(mImages.Count.ToString() + " images in Assets/StreamingAssets/" + pathToImages);
 #endif
 
-		Sprite sprite = null;
+        if (mImages.Count > 0)
+        {
+            mSelectedIndex = mImages.IndexOf(defaultImage);
+            StartCoroutine(startUpdateImage());
+        }
+        else
+        {
+            Debug.LogError("Images not found in Assets/StreamingAssets/" + pathToImages);
+        }
+    }
 
-		if (!mCachedSprites.TryGetValue(mSelectedImage, out sprite))
-		{
-			byte[] imageBytes;
-			
-			if (imagePath.Contains("://"))
-			{
-				WWW www = new WWW(imagePath);
-				yield return www;
-				imageBytes = www.bytes;
-			}
-			else
-			{
-				imageBytes = File.ReadAllBytes(imagePath);
-			}
+    private IEnumerator startUpdateImage()
+    {
+        if (mSelectedIndex < 0)
+        {
+            mSelectedIndex = 0;
+        }
+        else
+        if (mSelectedIndex > mImages.Count - 1)
+        {
+            mSelectedIndex = mImages.Count - 1;
+        }
 
-			Texture2D texture = new Texture2D(1, 1);
-			texture.LoadImage(imageBytes);
-			
-			sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0, 0));
-			mCachedSprites.Add(mSelectedImage, sprite);
-		}
+        mSelectedImage = mImages[mSelectedIndex];
 
-		mImage.sprite = sprite;
+        mLeftButton.interactable  = (mSelectedIndex > 0);
+        mRightButton.interactable = (mSelectedIndex < mImages.Count - 1);
 
-		onImageSelected.Invoke();
-	}
+        string imagePath = Application.streamingAssetsPath + "/" + pathToImages + "/" + mSelectedImage;
 
-	// Use this for initialization
-	void Start()
-	{
-		Transform leftButtonTransform = transform.FindChild("LeftButton");
-
-		if (leftButtonTransform == null)
-		{
-			Debug.LogError("LeftButton doesn't found in ImageSelector");
-			return;
-		}
-
-		mLeftButton  = leftButtonTransform.GetComponent<Button>();
-
-		Transform rightButtonTransform = transform.FindChild("RightButton");
-		
-		if (rightButtonTransform == null)
-		{
-			Debug.LogError("RightButton doesn't found in ImageSelector");
-			return;
-		}
-		
-		mRightButton = rightButtonTransform.GetComponent<Button>();
-
-		Transform imageTransform = transform.FindChild("Image");
-		
-		if (imageTransform == null)
-		{
-			Debug.LogError("Image doesn't found in ImageSelector");
-			return;
-		}
-		
-		mImage = imageTransform.GetComponent<Image>();
-
-
-
-		mLeftButton.onClick.AddListener(OnLeftPressed);
-		mRightButton.onClick.AddListener(OnRightPressed);
-
-		mLeftButton.interactable  = false;
-		mRightButton.interactable = false;
-
-		mImages        = new List<string>();
-		mCachedSprites = new Dictionary<string, Sprite>();
-
-		StartCoroutine(startLoadingStreamingAssets());
-	}
-
-	private void OnLeftPressed()
-	{
 #if IMAGE_SELECTOR_DEBUG
-		Debug.Log("Left button pressed");
+        Debug.Log("Updating image from path : " + imagePath);
 #endif
 
-		--mSelectedIndex;
-		StartCoroutine(startUpdateImage());
-	}
+        Sprite sprite = null;
 
-	private void OnRightPressed()
-	{
+        if (!mCachedSprites.TryGetValue(mSelectedImage, out sprite))
+        {
+            byte[] imageBytes;
+
+            if (imagePath.Contains("://"))
+            {
+                WWW www = new WWW(imagePath);
+                yield return www;
+                imageBytes = www.bytes;
+            }
+            else
+            {
+                imageBytes = File.ReadAllBytes(imagePath);
+            }
+
+            Texture2D texture = new Texture2D(1, 1);
+            texture.LoadImage(imageBytes);
+
+            sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0, 0));
+            mCachedSprites.Add(mSelectedImage, sprite);
+        }
+
+        mImage.sprite = sprite;
+
+        onImageSelected.Invoke();
+    }
+
+    // Use this for initialization
+    void Start()
+    {
+        Transform leftButtonTransform = transform.FindChild("LeftButton");
+
+        if (leftButtonTransform == null)
+        {
+            Debug.LogError("LeftButton doesn't found in ImageSelector");
+            return;
+        }
+
+        mLeftButton  = leftButtonTransform.GetComponent<Button>();
+
+        Transform rightButtonTransform = transform.FindChild("RightButton");
+
+        if (rightButtonTransform == null)
+        {
+            Debug.LogError("RightButton doesn't found in ImageSelector");
+            return;
+        }
+
+        mRightButton = rightButtonTransform.GetComponent<Button>();
+
+        Transform imageTransform = transform.FindChild("Image");
+
+        if (imageTransform == null)
+        {
+            Debug.LogError("Image doesn't found in ImageSelector");
+            return;
+        }
+
+        mImage = imageTransform.GetComponent<Image>();
+
+
+
+        mLeftButton.onClick.AddListener(OnLeftPressed);
+        mRightButton.onClick.AddListener(OnRightPressed);
+
+        mLeftButton.interactable  = false;
+        mRightButton.interactable = false;
+
+        mImages        = new List<string>();
+        mCachedSprites = new Dictionary<string, Sprite>();
+
+        StartCoroutine(startLoadingStreamingAssets());
+    }
+
+    private void OnLeftPressed()
+    {
 #if IMAGE_SELECTOR_DEBUG
-		Debug.Log("Right button pressed");
+        Debug.Log("Left button pressed");
 #endif
 
-		++mSelectedIndex;
-		StartCoroutine(startUpdateImage());
-	}
+        --mSelectedIndex;
+        StartCoroutine(startUpdateImage());
+    }
+
+    private void OnRightPressed()
+    {
+#if IMAGE_SELECTOR_DEBUG
+        Debug.Log("Right button pressed");
+#endif
+
+        ++mSelectedIndex;
+        StartCoroutine(startUpdateImage());
+    }
 }
